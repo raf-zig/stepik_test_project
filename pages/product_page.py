@@ -16,3 +16,11 @@ class MainPage(BasePage):
         price_messege = self.browser.find_element(*ItemPageLocators.PRICE_MESSEGE)
         price_in_basket = self.browser.find_element(*ItemPageLocators.PRICE_IN_BASKET)  
         assert price_messege.text == price_in_basket.text, "не равно"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ItemPageLocators.BOOK_NAME), \
+            "Success message is presented, but should not be"
+
+    def should_disappeare_of_success_message(self):
+        assert self.is_disappeared(*ItemPageLocators.BOOK_NAME), \
+            "Success message is presented"
